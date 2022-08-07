@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-fit=no"/>
+    <title>가계 book</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header class = "round-box">
+        <!-- <form> -->
+            <div class = icon-circle>
+                ✏️
+            </div>
+            <div class = "box-form">
+                <div>
+                    지출 / 소비
+                </div>
+                <select id = "combo-type" name="type" >
+                    <option value="none">선택해주세요.</option>
+                    <option value="plus">수입</option>
+                    <option value="minus">지출</option>
+                </select>
+            </div>
+            <div class = "box-form">
+                <div>
+                    내역
+                </div>
+                <input 
+                    id = "input-description"
+                    type="text" placeholder="내용을 입력해주세요." />
+            </div>
+            <div class = "box-form">
+                <div>
+                    금액
+                </div>
+                <input
+                    id = "input-money" 
+                    type="text" placeholder="금액을 입력해주세요." />
+            </div>
+            <button>
+                <span>등록하기</span>
+            </button>
+        <!-- </form> -->
+    </header>
+    <section class = "round-box">
+        <!-- span으로 하 padding을 주는 방법도 있다 -->
+        <div class = icon-circle>
+            🗓
+        </div>
+        <div id = "calendar-header">
+            <button class = "calendar-header-button">
+                <img src = "./img/left.png" alt = "이전 달 이동 버튼"/>
+            </button>
+            <div id = "calendar-header-title"></div>
+            <button class = "calendar-header-button">
+                <img src = "./img/right.png" alt = "다음 달 이동 버튼"/>
+            </button>
+        </div>
+        <div id = "calendar-body">
+            <table id = "calendar-table"></table>
+        </div>
+    </section>
+    <footer class = "round-box">
+        <div class = icon-circle>
+            📄
+        </div>
+    </footer>
+    <button>
+        <a 
+            class = "link-detail" 
+            href = "./detail/detail.html"
+            title = "상세 내역 보기 이동">
+            🕵️
+        </a>
+    </button>
+    
+    <!-- defer를 써서 위로 올리는것도 가능 -->
+    <script src="index.js"></script>
+</body>
+</html>
+
