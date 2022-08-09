@@ -144,14 +144,6 @@ const setClickListenerOnTdElements = (monthDates) =>
         log((e.path[1].rowIndex - 1) * 7 + e.target.cellIndex);
     });
 
-// [...document.getElementsByTagName("td")].forEach((td, index) => {
-//     td.addEventListener("click", () => {
-//         if (isClickableCell(monthDates[index])) {
-//             alert(monthDates[index]);
-//         }
-//     });
-// });
-
 // 이벤트 버블링 캡쳐링 -> 이벤트 위임 delegation -> 테이블에 한번만 리스너를 붙여줄 수 있음 -> 이벤트 타겟을 이용해서 td에 이벤트가 발생한건지 확인 가능.
 
 const drawCalenderOfDate = (date) =>
