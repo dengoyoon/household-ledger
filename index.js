@@ -104,8 +104,6 @@ const updateCalenderHTML = (calenderHTML) =>
             <th class = "text-saturday">토</th>
         </tr>` + calenderHTML);
 
-const isClickableCell = (cellContent) => Boolean(cellContent);
-
 const getDatesForDraw = (date) =>
     go(
         date,
@@ -126,9 +124,24 @@ const makeCalendar = (monthDatesForDraw) =>
         (calenderHTML) => updateCalenderHTML(calenderHTML)
     );
 
+const isClickableCell = (cellContent) => Boolean(cellContent);
+
+const getClickedCellIndex = (e) =>
+    isNaN((e.path[1].rowIndex - 1) * 7 + e.target.cellIndex)
+        ? -1
+        : (e.path[1].rowIndex - 1) * 7 + e.target.cellIndex;
+
 const setClickListenerOnTdElements = (monthDates) =>
     document.querySelector("#calendar-table").addEventListener("click", (e) => {
-        alert(e.target);
+        // alert(e.target);
+        if (e.target.tagName === "TD") {
+            const clickedDates = monthDates[getClickedCellIndex(e)];
+            if (isClickableCell(clickedDates)) {
+                alert(clickedDates);
+            }
+        }
+        log(monthDates);
+        log((e.path[1].rowIndex - 1) * 7 + e.target.cellIndex);
     });
 
 // [...document.getElementsByTagName("td")].forEach((td, index) => {
