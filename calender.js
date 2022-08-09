@@ -118,13 +118,17 @@ const makeCalendar = (monthDatesForDraw) =>
     );
 
 const setClickListenerOnTdElements = (monthDates) =>
-    [...document.getElementsByTagName("td")].forEach((td, index) => {
-        td.addEventListener("click", () => {
-            if (isClickableCell(monthDates[index])) {
-                alert(monthDates[index]);
-            }
-        });
-    }); // 수정해야 함. 만약에 365일 달력이 전부 나와야 한다면?
+    document.querySelector("#calendar-table").addEventListener("click", (e) => {
+        alert(e.target);
+    });
+
+// [...document.getElementsByTagName("td")].forEach((td, index) => {
+//     td.addEventListener("click", () => {
+//         if (isClickableCell(monthDates[index])) {
+//             alert(monthDates[index]);
+//         }
+//     });
+// });
 
 // 이벤트 버블링 캡쳐링 -> 이벤트 위임 delegation -> 테이블에 한번만 리스너를 붙여줄 수 있음 -> 이벤트 타겟을 이용해서 td에 이벤트가 발생한건지 확인 가능.
 
@@ -138,4 +142,4 @@ const drawCalenderOfDate = (date) =>
         }
     );
 
-module.exports = { drawCalenderOfDate };
+export { drawCalenderOfDate };
