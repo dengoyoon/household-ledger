@@ -8,11 +8,14 @@
 </head>
 <body>
     <header class = "round-box">
-        <!-- <form> -->
-            <div class = icon-circle>
-                ✏️
-            </div>
-            <div class = "box-form">
+        <div class = icon-circle>
+            ✏️
+        </div>
+        <div id = "header-selected-date">
+            달력에서 날짜를 선택해주세요.
+        </div>
+        <form>
+            <div class = "form-input">
                 <div>
                     지출 / 소비
                 </div>
@@ -22,7 +25,7 @@
                     <option value="minus">지출</option>
                 </select>
             </div>
-            <div class = "box-form">
+            <div class = "form-input">
                 <div>
                     내역
                 </div>
@@ -30,7 +33,7 @@
                     id = "input-description"
                     type="text" placeholder="내용을 입력해주세요." />
             </div>
-            <div class = "box-form">
+            <div class = "form-input">
                 <div>
                     금액
                 </div>
@@ -41,7 +44,7 @@
             <button>
                 <span>등록하기</span>
             </button>
-        <!-- </form> -->
+        </form>
     </header>
     <section class = "round-box">
         <!-- span으로 하 padding을 주는 방법도 있다 -->

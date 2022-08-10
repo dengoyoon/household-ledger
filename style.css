@@ -14,11 +14,23 @@ body {
 }
 
 header {
-    display: flex;
-    height: 200px;
-    align-items: center;
+    height: fit-content;
+    padding-top:50px;
+    padding-bottom:50px;
     font-size: 24px;
-    margin-top: 50px;
+}
+
+#header-selected-date {
+    width: 750px;
+    margin: auto;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+header form {
+    display: flex;
+    margin: auto;
+    justify-content: center;
 }
 
 .icon-circle {
@@ -35,7 +47,7 @@ header {
     background-color: white;
 }
 
-.box-form {
+.form-input {
     width: 250px;
     height: 50px;
     padding-bottom: 40px;
