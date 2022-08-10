@@ -21,18 +21,23 @@ const range = (stop) => {
     return result;
 };
 
-let selectedDate;
-let currentMonthDates;
+let _selectedDate;
+let _currentMonthDates;
 
 const setSelectedDate = (date) => {
-    selectedDate = date;
+    _selectedDate = date;
 };
+
+const updateSelectedDateOfHeader = (date) =>
+    (document.querySelector("#header-selected-date").innerHTML = `${date.getFullYear()}년 ${
+        date.getMonth() + 1
+    }월 ${date.getDate()}일의 소비 내역을 입력해주세요.`);
 
 const setCurrentMonthDates = (monthDates) => {
-    currentMonthDates = monthDates;
+    _currentMonthDates = monthDates;
 };
 
-const getCurrentMonthDates = () => currentMonthDates;
+const getCurrentMonthDates = () => _currentMonthDates;
 
 const getMonthName = (monthIndex) =>
     [
@@ -146,7 +151,9 @@ const clickEventOnCalendar = (e) => {
     if (e.target.tagName === "TD") {
         const clickedCellIndex = getClickedCellIndex(e);
         if (isClickableCell(clickedCellIndex)) {
-            setSelectedDate(getCurrentMonthDates()[clickedCellIndex]);
+            const selectedDate = getCurrentMonthDates()[clickedCellIndex];
+            setSelectedDate(selectedDate);
+            updateSelectedDateOfHeader(selectedDate);
         }
     }
 };
