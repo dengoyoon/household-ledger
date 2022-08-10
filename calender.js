@@ -21,6 +21,19 @@ const range = (stop) => {
     return result;
 };
 
+let selectedDate;
+let currentMonthDates;
+
+const setSelectedDate = (date) => {
+    selectedDate = date;
+};
+
+const setCurrentMonthDates = (monthDates) => {
+    currentMonthDates = monthDates;
+};
+
+const getCurrentMonthDates = () => currentMonthDates;
+
 const getMonthName = (monthIndex) =>
     [
         "January",
@@ -129,22 +142,20 @@ const getClickedCellIndex = (e) =>
         ? -1
         : (e.path[1].rowIndex - 1) * 7 + e.target.cellIndex;
 
-const clickEventOnCalendar = (monthDates, e) => {
+const clickEventOnCalendar = (e) => {
     if (e.target.tagName === "TD") {
-        const clickedDates = "dd"; //monthDates[getClickedCellIndex(e)];
-        if (isClickableCell(clickedDates)) {
-            alert(clickedDates);
+        const clickedCellIndex = getClickedCellIndex(e);
+        if (isClickableCell(clickedCellIndex)) {
+            setSelectedDate(getCurrentMonthDates()[clickedCellIndex]);
         }
     }
 };
 
-const curryEventOnCalendar = () => (monthDates) => (e) => clickEventOnCalendar(monthDates, e);
-
-const setClickListenerOnCalendar = (monthDates) => {
+const setClickListenerOnCalendar = () => {
     document.querySelector("#calendar-table").addEventListener("click", clickEventOnCalendar);
 };
 
-const removeClickListenerOnCalendar = (monthDates) => {
+const removeClickListenerOnCalendar = () => {
     document.querySelector("#calendar-table").removeEventListener("click", clickEventOnCalendar);
 };
 
@@ -156,17 +167,18 @@ const drawCalenderOfDate = (date) => {
         (date) => getDatesForDraw(date),
         (monthDatesForDraw) => {
             makeCalendar(monthDatesForDraw);
-            setClickListenerOnCalendar(monthDatesForDraw.flat());
+            setCurrentMonthDates(monthDatesForDraw.flat());
+            setClickListenerOnCalendar();
         }
     );
 };
 
-const eraseCalendarOfDate = (date) => {
+const eraseCalendarEvent = (date) => {
     go(
         date,
         (date) => getDatesForDraw(date),
         (monthDatesForDraw) => {
-            removeClickListenerOnCalendar(monthDatesForDraw.flat());
+            removeClickListenerOnCalendar();
         }
     );
 };
@@ -176,17 +188,16 @@ const setChangeMonthListener = (currentDate) => {
     const rightMoveButton = document.getElementsByClassName("calendar-header-button")[1];
 
     leftMoveButton.addEventListener("click", () => {
-        eraseCalendarOfDate(currentDate);
+        eraseCalendarEvent(currentDate);
         currentDate.setMonth(currentDate.getMonth() - 1);
         drawCalenderOfDate(currentDate);
     });
 
     rightMoveButton.addEventListener("click", () => {
+        eraseCalendarEvent(currentDate);
         currentDate.setMonth(currentDate.getMonth() + 1);
         drawCalenderOfDate(currentDate);
     });
 };
-
-// module.exports = { drawCalenderOfDate };
 
 export { drawCalenderOfDate, setChangeMonthListener };
