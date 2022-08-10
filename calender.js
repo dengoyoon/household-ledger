@@ -2,6 +2,13 @@ Array.prototype.top = function () {
     return this.length !== 0 ? this[this.length - 1] : undefined;
 };
 
+// curry는 f라는 함수 인자를 받아서 (a, ...bs) => {}라는 함수를 리턴한다는 뜻.
+const curry =
+    (f) =>
+    (a, ...bs) =>
+        //f의 인자로 2개 이상 들어왔다면 bs가 최소 1개 이상 있을 것
+        bs.length ? f(a, ...bs) : (...bs) => f(a, ...bs);
+
 const log = console.log; //eslint-disable-line no-unused-vars
 
 const go = (...as) => as.reduce((a, f) => f(a));
@@ -95,8 +102,6 @@ const updateCalenderHTML = (calenderHTML) =>
             <th class = "text-saturday">토</th>
         </tr>` + calenderHTML);
 
-const isClickableCell = (cellContent) => Boolean(cellContent);
-
 const getDatesForDraw = (date) =>
     go(
         date,
@@ -117,29 +122,71 @@ const makeCalendar = (monthDatesForDraw) =>
         (calenderHTML) => updateCalenderHTML(calenderHTML)
     );
 
-const setClickListenerOnTdElements = (monthDates) =>
-    document.querySelector("#calendar-table").addEventListener("click", (e) => {
-        alert(e.target);
-    });
+const isClickableCell = (cellContent) => Boolean(cellContent);
 
-// [...document.getElementsByTagName("td")].forEach((td, index) => {
-//     td.addEventListener("click", () => {
-//         if (isClickableCell(monthDates[index])) {
-//             alert(monthDates[index]);
-//         }
-//     });
-// });
+const getClickedCellIndex = (e) =>
+    isNaN((e.path[1].rowIndex - 1) * 7 + e.target.cellIndex)
+        ? -1
+        : (e.path[1].rowIndex - 1) * 7 + e.target.cellIndex;
+
+const clickEventOnCalendar = (monthDates, e) => {
+    if (e.target.tagName === "TD") {
+        const clickedDates = "dd"; //monthDates[getClickedCellIndex(e)];
+        if (isClickableCell(clickedDates)) {
+            alert(clickedDates);
+        }
+    }
+};
+
+const curryEventOnCalendar = () => (monthDates) => (e) => clickEventOnCalendar(monthDates, e);
+
+const setClickListenerOnCalendar = (monthDates) => {
+    document.querySelector("#calendar-table").addEventListener("click", clickEventOnCalendar);
+};
+
+const removeClickListenerOnCalendar = (monthDates) => {
+    document.querySelector("#calendar-table").removeEventListener("click", clickEventOnCalendar);
+};
 
 // 이벤트 버블링 캡쳐링 -> 이벤트 위임 delegation -> 테이블에 한번만 리스너를 붙여줄 수 있음 -> 이벤트 타겟을 이용해서 td에 이벤트가 발생한건지 확인 가능.
 
-const drawCalenderOfDate = (date) =>
+const drawCalenderOfDate = (date) => {
     go(
         date,
         (date) => getDatesForDraw(date),
         (monthDatesForDraw) => {
             makeCalendar(monthDatesForDraw);
-            setClickListenerOnTdElements(monthDatesForDraw.flat());
+            setClickListenerOnCalendar(monthDatesForDraw.flat());
         }
     );
+};
 
-export { drawCalenderOfDate };
+const eraseCalendarOfDate = (date) => {
+    go(
+        date,
+        (date) => getDatesForDraw(date),
+        (monthDatesForDraw) => {
+            removeClickListenerOnCalendar(monthDatesForDraw.flat());
+        }
+    );
+};
+
+const setChangeMonthListener = (currentDate) => {
+    const leftMoveButton = document.getElementsByClassName("calendar-header-button")[0];
+    const rightMoveButton = document.getElementsByClassName("calendar-header-button")[1];
+
+    leftMoveButton.addEventListener("click", () => {
+        eraseCalendarOfDate(currentDate);
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        drawCalenderOfDate(currentDate);
+    });
+
+    rightMoveButton.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        drawCalenderOfDate(currentDate);
+    });
+};
+
+// module.exports = { drawCalenderOfDate };
+
+export { drawCalenderOfDate, setChangeMonthListener };
