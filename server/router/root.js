@@ -11,4 +11,13 @@ router.get("/", (req, res) => {
     });
 });
 
+// router.get("/", (req, res) => {
+//     db.find({ date: { $regex: /^AP/ } }, (err, docs) => {
+//         res.send({
+//             isSuccess: true,
+//             result: docs,
+//         });
+//     });
+// });
+
 export default router;

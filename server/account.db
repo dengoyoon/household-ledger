@@ -1,2 +1,4 @@
-{"date":"APPLE","type":"minus","_id":"1BsS75m1yOTdXzgA"}
-{"date":"HI","type":"plus","_id":"V6yyUrOweSV8dwiM"}
+{"date":"2022-08-01","type":"minus","description":"돼지 갈비 냠냠","money":15000,"_id":"DOo53ooh3pmcEj5J"}
+{"date":"2022-07-23","type":"minus","description":"중국집 짜장면","money":6000,"_id":"b9eXrOFpLWLv9GMi"}
+{"date":"2022-08-01","type":"plus","description":"월급","money":200000,"_id":"xJAlSM7jxi0UKoLf"}
+{"date":"2022-08-12","type":"minus","description":"블루포트 바닐라라떼","money":3100,"_id":"zQEix6zel1alHEki"}

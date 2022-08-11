@@ -12,4 +12,18 @@ router.post("/", (req, res) => {
     });
 });
 
+router.get("/date", (req, res) => {
+    const date = req.query.date;
+    db.find({ date: date }, (err, docs) => {
+        res.send({
+            isSuccess: true,
+            result: docs,
+        });
+    });
+});
+
+router.get("/month", (req, res) => {
+    const yearMonth = req.query.yearMonth;
+});
+
 export default router;
