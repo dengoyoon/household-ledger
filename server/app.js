@@ -1,40 +1,18 @@
 import express from "express";
 import cors from "cors";
+import bodyParser from "body-parser";
 import root from "./router/root.js";
+import account from "./router/account.js";
+
 const app = express();
 const port = 3000;
 
+app.use(bodyParser.json());
 app.use(cors());
 
-app.use("/root", root);
+app.use("/", root);
+app.use("/account", account);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
-
-// var express = require('express');
-// var router = express.Router();
-
-// router.use(function(req, res, next) {
-//   next();
-// });
-
-// router.get('/', function(req, res) {
-//   res.send('hi1');
-// });
-
-// router.get('/about', function(req, res) {
-//   res.send('hi2');
-// });
-
-// module.exports = router;
-
-// var express = require('express');
-// var app = express();
-// var router_1 = require('./router/router_1');
-
-// app.use('/aboutrouter',router_1);
-
-// app.listen(3000, () => {
-//   console.log('listen t0 3000')
-// })
