@@ -24,6 +24,13 @@ router.get("/date", (req, res) => {
 
 router.get("/month", (req, res) => {
     const yearMonth = req.query.yearMonth;
+
+    db.find({ date: { $regex: new RegExp(`${yearMonth}.*`) } }, (err, docs) => {
+        res.send({
+            isSuccess: true,
+            result: docs,
+        });
+    });
 });
 
 export default router;
