@@ -8,6 +8,7 @@
 */
 
 import { drawCalenderOfDate, setChangeMonthListener } from "./calender.js";
+import { getTest } from "./api/api.js";
 
 Array.prototype.top = function () {
     return this.length !== 0 ? this[this.length - 1] : undefined;
@@ -28,6 +29,9 @@ const range = (stop) => {
 const currentDate = new Date();
 drawCalenderOfDate(currentDate);
 setChangeMonthListener(currentDate);
+
+const msg = await getTest();
+log(msg);
 
 // 달력 이동 했을때 기존 이벤트 핸들러 다 떼어야 함.
 // querySelector, SelectorAll를 더 많이 써볼 것. css 문법?으로 선택 가능함.
