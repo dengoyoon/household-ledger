@@ -1,0 +1,15 @@
+내용 : 내역 등록하기
+uri : POST /account
+body : {
+    date : Date,
+    type : String (domain = ["plus", "minus"]),
+    description : String,
+    money : Number
+}
+
+내용 : 날짜별/월별 내역 조회
+uri : GET /date/account?date=&?mode=
+Query : 
+    date : Date,
+    mode : String (domain = ["date", "month"])
+
