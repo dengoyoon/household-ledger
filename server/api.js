@@ -4,10 +4,12 @@ const header = {
 };
 
 const postAccount = async (body) => {
-    return await fetch(`${URL}/account`, {
+    const response = await fetch(`${URL}/account`, {
+        method: "POST",
         headers: header,
         body: JSON.stringify(body),
-    }).json();
+    });
+    return response.json();
 };
 
 const getAccountDaily = async (date) => {

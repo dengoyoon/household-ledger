@@ -28,6 +28,8 @@ const setSelectedDate = (date) => {
     _selectedDate = date;
 };
 
+const getSelectedDate = () => _selectedDate;
+
 const updateSelectedDateOfHeader = (date) =>
     (document.querySelector("#header-selected-date").innerHTML = `${date.getFullYear()}년 ${
         date.getMonth() + 1
@@ -207,4 +209,4 @@ const setChangeMonthListener = (currentDate) => {
     });
 };
 
-export { drawCalenderOfDate, setChangeMonthListener };
+export { drawCalenderOfDate, setChangeMonthListener, getSelectedDate };

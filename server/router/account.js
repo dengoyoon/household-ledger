@@ -14,7 +14,7 @@ router.post("/", (req, res) => {
 
 router.get("/date", (req, res) => {
     const date = req.query.date;
-    db.find({ date: date }, (err, docs) => {
+    db.find({ date: { $regex: new RegExp(`${date}.*`) } }, (err, docs) => {
         res.send({
             isSuccess: true,
             result: docs,
