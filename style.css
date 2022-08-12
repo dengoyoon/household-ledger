@@ -165,7 +165,7 @@ section {
 #calendar-body td {
     text-align: left;
     vertical-align: top;
-    width: 110px;
+    width: 100px;
     height: 90px;
     border-right: 1px solid rgb(242, 242, 242);
     border-bottom: 1px solid rgb(242, 242, 242);
@@ -185,7 +185,7 @@ footer {
     padding-top:50px;
     padding-bottom:50px;
     font-size: 24px;
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 
 #footer-title {

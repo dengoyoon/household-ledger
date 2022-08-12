@@ -1,3 +1,6 @@
+import { updateSelectedDateOfHeader } from "./header.js";
+import { updateAccountList } from "./account-list.js";
+
 Array.prototype.top = function () {
     return this.length !== 0 ? this[this.length - 1] : undefined;
 };
@@ -30,10 +33,10 @@ const setSelectedDate = (date) => {
 
 const getSelectedDate = () => _selectedDate;
 
-const updateSelectedDateOfHeader = (date) =>
-    (document.querySelector("#header-selected-date").innerHTML = `${date.getFullYear()}년 ${
-        date.getMonth() + 1
-    }월 ${date.getDate()}일의 소비 내역을 입력해주세요.`);
+// const updateSelectedDateOfHeader = (date) =>
+//     (document.querySelector("#header-selected-date").innerHTML = `${date.getFullYear()}년 ${
+//         date.getMonth() + 1
+//     }월 ${date.getDate()}일의 소비 내역을 입력해주세요.`);
 
 const setCurrentMonthDates = (monthDates) => {
     _currentMonthDates = monthDates;
@@ -156,6 +159,7 @@ const clickEventOnCalendar = (e) => {
             const selectedDate = getCurrentMonthDates()[clickedCellIndex];
             setSelectedDate(selectedDate);
             updateSelectedDateOfHeader(selectedDate);
+            updateAccountList(selectedDate);
         }
     }
 };

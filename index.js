@@ -39,7 +39,7 @@ setSubmitAccountListener();
 // const data = JSON.parse(msg.result);
 // log(data.substring(0, 10));
 
-// const msg = await getAccountDaily(currentDate);
+// const msg = await getAccountDaily("2022-08-08");
 // const data = msg.result;
 // log(data);
 
