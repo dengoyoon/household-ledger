@@ -30,7 +30,10 @@ const updateAccountListContent = (accountsOfCurrentDate) =>
 const getCurrentDateForGet = (currentDate) =>
     new Date(+currentDate + 3240 * 10000).toISOString().substring(0, 8);
 
+const convertIsoStringToDate = (isoDate) => new Date(isoDate.slice(0, -1));
+
 const updateAccountListMonthly = async (currentDate) => {
+    currentDate = convertIsoStringToDate(currentDate);
     updateAccountListTitle(currentDate);
     const { result: accountsOfCurrentDate } = await getAccountMonthly(
         getCurrentDateForGet(currentDate)
