@@ -13,7 +13,7 @@ body {
     box-shadow: 0px 0px 15px rgb(153, 153, 153);
 }
 
-header {
+.home header {
     height: fit-content;
     padding-top:50px;
     padding-bottom:50px;
@@ -27,7 +27,7 @@ header {
     font-weight: bold;
 }
 
-header form {
+.home header form {
     display: flex;
     margin: auto;
     justify-content: center;
@@ -180,7 +180,7 @@ section {
     color : blue;
 }
 
-footer {
+.home footer {
     height: fit-content;
     padding-top:50px;
     padding-bottom:50px;
@@ -188,20 +188,20 @@ footer {
     visibility: hidden;
 }
 
-#footer-title {
+#footer-title, #section-title {
     width: 750px;
     margin: auto;
     font-weight: bold;
     margin-bottom: 30px;
 }
 
-#footer-list {
+#footer-list, #section-list {
     width: 750px;
     margin: auto;
     padding-left: 0;
 }
 
-#footer-list li {
+#footer-list li, #section-list li {
     list-style: none;
     display:flex;
     padding-top: 15px;
@@ -237,4 +237,11 @@ footer {
     font-size: 35px;
     background-color: white;
     box-shadow: 0px 0px 15px rgb(153, 153, 153);
+}
+
+.detail section {
+    height: fit-content;
+    padding-top:50px;
+    padding-bottom:50px;
+    font-size: 24px;
 }

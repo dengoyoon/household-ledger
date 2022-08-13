@@ -1,5 +1,12 @@
 import { updateSelectedDateOfHeader } from "./header.js";
-import { updateAccountList } from "./account-list.js";
+import { updateAccountList } from "./daily-account-list.js";
+import {
+    key,
+    setCurrentDate,
+    getCurrentDate,
+    setSelectedDate,
+    getSelectedDate,
+} from "./local-storage.js";
 
 Array.prototype.top = function () {
     return this.length !== 0 ? this[this.length - 1] : undefined;
@@ -24,21 +31,9 @@ const range = (stop) => {
     return result;
 };
 
-let _selectedDate;
+// let _selectedDate;
+// let _currentDate;
 let _currentMonthDates;
-let _currentDate;
-
-const setCurrentDate = (date) => {
-    _currentDate = date;
-};
-
-const getCurrentDate = () => _currentDate;
-
-const setSelectedDate = (date) => {
-    _selectedDate = date;
-};
-
-const getSelectedDate = () => _selectedDate;
 
 const setCurrentMonthDates = (monthDates) => {
     _currentMonthDates = monthDates;

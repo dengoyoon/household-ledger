@@ -7,7 +7,7 @@
 3. 
 */
 
-import { initCalender } from "./calender.js";
+import { initCalender, getCurrentDate } from "./calender.js";
 import { getAll, getAccountDaily, getAccountMonthly } from "./server/api.js";
 import { setSubmitAccountListener } from "./header.js";
 
