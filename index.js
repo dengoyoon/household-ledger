@@ -7,7 +7,7 @@
 3. 
 */
 
-import { drawCalenderOfDate, setChangeMonthListener } from "./calender.js";
+import { initCalender } from "./calender.js";
 import { getAll, getAccountDaily, getAccountMonthly } from "./server/api.js";
 import { setSubmitAccountListener } from "./header.js";
 
@@ -27,21 +27,8 @@ const range = (stop) => {
     return result;
 };
 
-const currentDate = new Date();
-drawCalenderOfDate(currentDate);
-setChangeMonthListener(currentDate);
+initCalender();
 
 setSubmitAccountListener();
 
-// post 할때도 stringify해서 넣어야 함
-// const convertedDate = JSON.stringify(currentDate);
-// const msg = await getAccountDaily(convertedDate);
-// const data = JSON.parse(msg.result);
-// log(data.substring(0, 10));
-
-// const msg = await getAccountDaily("2022-08-08");
-// const data = msg.result;
-// log(data);
-
-// 달력 이동 했을때 기존 이벤트 핸들러 다 떼어야 함.
 // querySelector, SelectorAll를 더 많이 써볼 것. css 문법?으로 선택 가능함.

@@ -26,17 +26,19 @@ const range = (stop) => {
 
 let _selectedDate;
 let _currentMonthDates;
+let _currentDate;
+
+const setCurrentDate = (date) => {
+    _currentDate = date;
+};
+
+const getCurrentDate = () => _currentDate;
 
 const setSelectedDate = (date) => {
     _selectedDate = date;
 };
 
 const getSelectedDate = () => _selectedDate;
-
-// const updateSelectedDateOfHeader = (date) =>
-//     (document.querySelector("#header-selected-date").innerHTML = `${date.getFullYear()}년 ${
-//         date.getMonth() + 1
-//     }월 ${date.getDate()}일의 소비 내역을 입력해주세요.`);
 
 const setCurrentMonthDates = (monthDates) => {
     _currentMonthDates = monthDates;
@@ -213,4 +215,11 @@ const setChangeMonthListener = (currentDate) => {
     });
 };
 
-export { drawCalenderOfDate, setChangeMonthListener, getSelectedDate };
+const initCalender = () => {
+    const currentDate = new Date();
+    setCurrentDate(currentDate);
+    drawCalenderOfDate(currentDate);
+    setChangeMonthListener(currentDate);
+};
+
+export { initCalender, getSelectedDate, getCurrentDate };
