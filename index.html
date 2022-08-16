@@ -6,23 +6,26 @@
     <title>가계 book</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body class = "home">
     <header class = "round-box">
-        <!-- <form> -->
-            <div class = icon-circle>
-                ✏️
-            </div>
-            <div class = "box-form">
+        <div class = icon-circle>
+            ✏️
+        </div>
+        <div id = "header-selected-date">
+            달력에서 날짜를 선택해주세요.
+        </div>
+        <form>
+            <div class = "form-input">
                 <div>
-                    지출 / 소비
+                    입금 / 출금
                 </div>
                 <select id = "combo-type" name="type" >
                     <option value="none">선택해주세요.</option>
-                    <option value="plus">수입</option>
-                    <option value="minus">지출</option>
+                    <option value="plus">입금</option>
+                    <option value="minus">출금</option>
                 </select>
             </div>
-            <div class = "box-form">
+            <div class = "form-input">
                 <div>
                     내역
                 </div>
@@ -30,7 +33,7 @@
                     id = "input-description"
                     type="text" placeholder="내용을 입력해주세요." />
             </div>
-            <div class = "box-form">
+            <div class = "form-input">
                 <div>
                     금액
                 </div>
@@ -38,10 +41,10 @@
                     id = "input-money" 
                     type="text" placeholder="금액을 입력해주세요." />
             </div>
-            <button>
+            <button id = "form-submit">
                 <span>등록하기</span>
             </button>
-        <!-- </form> -->
+        </form>
     </header>
     <section class = "round-box">
         <!-- span으로 하 padding을 주는 방법도 있다 -->
@@ -65,6 +68,10 @@
         <div class = icon-circle>
             📄
         </div>
+        <div id="footer-title">
+        </div>
+        <ul id="footer-list">
+        </ul>
     </footer>
     <button>
         <a 
@@ -76,7 +83,7 @@
     </button>
     
     <!-- defer를 써서 위로 올리는것도 가능 -->
-    <script src="index.js"></script>
+    <script type = "module" src="index.js"></script>
 </body>
 </html>
 

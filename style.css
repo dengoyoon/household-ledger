@@ -1,24 +1,36 @@
 body {
-    background-color: rgb(148, 178, 215);
+    background-color: rgb(184, 205, 231);
 }
 
 .round-box {
     position: relative;
     margin: auto;
     background-color: white;
-    border-radius: 100px;
+    border-radius: 150px;
     margin-top: 50px;
     width: 1000px;
     justify-content: center;
     box-shadow: 0px 0px 15px rgb(153, 153, 153);
 }
 
-header {
-    display: flex;
-    height: 200px;
-    align-items: center;
+.home header {
+    height: fit-content;
+    padding-top:50px;
+    padding-bottom:50px;
     font-size: 24px;
-    margin-top: 50px;
+}
+
+#header-selected-date {
+    width: 750px;
+    margin: auto;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.home header form {
+    display: flex;
+    margin: auto;
+    justify-content: center;
 }
 
 .icon-circle {
@@ -26,16 +38,16 @@ header {
     text-align: center;
     top: 0;
     left: 0;
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
     border-radius: 40px;
-    font-size: 30px;
+    font-size: 35px;
     box-shadow: 0px 0px 10px rgb(153, 153, 153);
     background-color: white;
 }
 
-.box-form {
+.form-input {
     width: 250px;
     height: 50px;
     padding-bottom: 40px;
@@ -153,7 +165,7 @@ section {
 #calendar-body td {
     text-align: left;
     vertical-align: top;
-    width: 110px;
+    width: 100px;
     height: 90px;
     border-right: 1px solid rgb(242, 242, 242);
     border-bottom: 1px solid rgb(242, 242, 242);
@@ -168,8 +180,48 @@ section {
     color : blue;
 }
 
-footer {
-    height: 500px;
+.home footer {
+    height: fit-content;
+    padding-top:50px;
+    padding-bottom:50px;
+    font-size: 24px;
+    visibility: hidden;
+}
+
+#footer-title, #section-title {
+    width: 750px;
+    margin: auto;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+#footer-list, #section-list {
+    width: 750px;
+    margin: auto;
+    padding-left: 0;
+}
+
+#footer-list li, #section-list li {
+    list-style: none;
+    display:flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgb(229, 229, 229);
+}
+
+.list-text-minus {
+    color: blue;
+    font-weight: bold;
+}
+
+.list-text-plus {
+    color: red;
+    font-weight: bold;
+}
+
+.list-text-description {
+    /* width : 250px; */
+    margin-left: auto;
 }
 
 .link-detail {
@@ -185,4 +237,11 @@ footer {
     font-size: 35px;
     background-color: white;
     box-shadow: 0px 0px 15px rgb(153, 153, 153);
+}
+
+.detail section {
+    height: fit-content;
+    padding-top:50px;
+    padding-bottom:50px;
+    font-size: 24px;
 }

@@ -1,0 +1,18 @@
+내용 : 내역 등록하기
+uri : POST /account
+body : {
+    date : String (example = "2022-08-12T07:44:48.799Z"),
+    type : String (domain = ["plus", "minus"]),
+    description : String,
+    money : Number
+}
+
+내용 : 날짜별 내역 조회
+uri : GET /account/date?date=
+Query : 
+    date : String (example = "2022-08-12")
+
+내용 : 월별 내역 조회
+uri : GET /account/month?yearMonth=
+Query : 
+    yearMonth : String (example = "2022-08")
